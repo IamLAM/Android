@@ -13,4 +13,13 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="163dp"
         tools:layout_editor_absoluteY="203dp" />
+
+    <Button
+        android:id="@+id/buttonMS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="214dp"
+        android:text="Siguiente" />
 </RelativeLayout>

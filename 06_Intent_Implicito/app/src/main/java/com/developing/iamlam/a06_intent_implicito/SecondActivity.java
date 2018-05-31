@@ -1,12 +1,18 @@
 package com.developing.iamlam.a06_intent_implicito;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
     private TextView tv;
+    private Button btn;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,5 +33,18 @@ public class SecondActivity extends AppCompatActivity {
             Toast.makeText(SecondActivity.this,"Ningun valor fue enviado",Toast.LENGTH_LONG).show();
         }
 
+        btn=findViewById(R.id.buttonMS);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ints=new Intent(SecondActivity.this,ThirdActivity.class);
+                startActivity(ints);
+            }
+        });
+
+
     }
+
+
+
 }
