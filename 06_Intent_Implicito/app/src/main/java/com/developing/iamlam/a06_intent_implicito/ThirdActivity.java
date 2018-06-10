@@ -18,8 +18,11 @@ public class ThirdActivity extends AppCompatActivity {
 
     private EditText etp;
     private EditText etw;
+    private EditText etm;
     private ImageButton ibp;
     private ImageButton ibw;
+    private ImageButton ibm;
+    private ImageButton ibcon;
 
     private ImageButton ibc;
     private final int PCC = 200;
@@ -31,10 +34,12 @@ public class ThirdActivity extends AppCompatActivity {
 
         etp = findViewById(R.id.editTextPhone);
         etw = findViewById(R.id.editTextWeb);
+        etm=findViewById(R.id.editTextMail);
         ibp = findViewById(R.id.imageButtonPhone);
         ibw = findViewById(R.id.imageButtonWeb);
         ibc = findViewById(R.id.imageButtonCam);
-
+        ibcon=findViewById(R.id.imageButtonContacto);
+        ibm=findViewById(R.id.imageButtonMail);
 
         ibp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +94,27 @@ public class ThirdActivity extends AppCompatActivity {
 
 
                 }
+            }
+        });
+// acceso a contactos
+        ibcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentContact=new Intent(Intent.ACTION_VIEW,Uri.parse("content://contacts/people"));
+                startActivity(intentContact);
+            }
+        });
+
+
+        //acceso a correo
+
+        ibm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String correo=etm.getText().toString();
+
+                Intent intentMail=new Intent(Intent.ACTION_SENDTO,Uri.parse("mailto:"+correo));
+                startActivity(intentMail);
             }
         });
 

@@ -50,6 +50,36 @@
             android:layout_alignStart="@+id/imageButtonPhone"
             android:layout_marginTop="128dp"
             app:srcCompat="@android:drawable/sym_def_app_icon" />
+
+        <ImageButton
+            android:id="@+id/imageButtonContacto"
+            android:layout_width="59dp"
+            android:layout_height="67dp"
+            android:layout_centerInParent="true"
+            android:background="@color/colorPrimary"
+            app:srcCompat="@android:drawable/sym_contact_card" />
+
+        <ImageButton
+            android:id="@+id/imageButtonMail"
+            android:layout_width="59dp"
+            android:layout_height="58dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="91dp"
+            android:background="@color/colorPrimary"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+        <EditText
+            android:id="@+id/editTextMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="157dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
     </RelativeLayout>
 
     <ImageButton
