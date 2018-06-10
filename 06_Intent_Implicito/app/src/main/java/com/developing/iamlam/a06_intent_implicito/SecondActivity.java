@@ -17,6 +17,9 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+//se carga el icono de la app
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_logoapp_round);
 
         tv=findViewById(R.id.textViewMS);
 //se recuperan los valores desde el primer activity

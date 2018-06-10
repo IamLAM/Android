@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //se carga el icono de la app
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_logoapp_round);
 
         btn = findViewById(R.id.buttonM);
         btn.setOnClickListener(new View.OnClickListener() {

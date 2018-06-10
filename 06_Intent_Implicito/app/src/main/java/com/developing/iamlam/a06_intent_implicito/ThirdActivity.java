@@ -31,6 +31,9 @@ public class ThirdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
+//se carga el icono de la app
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_logoapp_round);
 
         etp = findViewById(R.id.editTextPhone);
         etw = findViewById(R.id.editTextWeb);
