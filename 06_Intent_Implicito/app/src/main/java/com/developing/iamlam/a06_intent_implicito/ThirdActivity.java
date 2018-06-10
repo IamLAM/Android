@@ -41,13 +41,18 @@ public class ThirdActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String tel = etp.getText().toString();
 
-                if (tel != null) {
+                if (tel != null&&!tel.isEmpty()) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, PCC);
                     } else {
 
                         oV(tel);
                     }
+
+                }else{
+
+
+                    Toast.makeText(ThirdActivity.this, "Por favor incluye un numero de telefono", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -70,6 +75,23 @@ public class ThirdActivity extends AppCompatActivity {
 
 
         });
+
+        //boton para web
+
+        ibw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url=etw.getText().toString();
+                if(url!=null&&!url.isEmpty()){
+
+                    Intent intentWeb=new Intent(Intent.ACTION_VIEW,Uri.parse("http://"+url));
+                    startActivity(intentWeb);
+
+
+                }
+            }
+        });
+
     }
 
 
