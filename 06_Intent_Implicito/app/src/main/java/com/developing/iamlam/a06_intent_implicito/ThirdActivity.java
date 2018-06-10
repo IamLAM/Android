@@ -34,19 +34,19 @@ public class ThirdActivity extends AppCompatActivity {
 
         etp = findViewById(R.id.editTextPhone);
         etw = findViewById(R.id.editTextWeb);
-        etm=findViewById(R.id.editTextMail);
+        etm = findViewById(R.id.editTextMail);
         ibp = findViewById(R.id.imageButtonPhone);
         ibw = findViewById(R.id.imageButtonWeb);
         ibc = findViewById(R.id.imageButtonCam);
-        ibcon=findViewById(R.id.imageButtonContacto);
-        ibm=findViewById(R.id.imageButtonMail);
+        ibcon = findViewById(R.id.imageButtonContacto);
+        ibm = findViewById(R.id.imageButtonMail);
 
         ibp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String tel = etp.getText().toString();
 
-                if (tel != null&&!tel.isEmpty()) {
+                if (tel != null && !tel.isEmpty()) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, PCC);
                     } else {
@@ -54,7 +54,7 @@ public class ThirdActivity extends AppCompatActivity {
                         oV(tel);
                     }
 
-                }else{
+                } else {
 
 
                     Toast.makeText(ThirdActivity.this, "Por favor incluye un numero de telefono", Toast.LENGTH_SHORT).show();
@@ -86,10 +86,10 @@ public class ThirdActivity extends AppCompatActivity {
         ibw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url=etw.getText().toString();
-                if(url!=null&&!url.isEmpty()){
+                String url = etw.getText().toString();
+                if (url != null && !url.isEmpty()) {
 
-                    Intent intentWeb=new Intent(Intent.ACTION_VIEW,Uri.parse("http://"+url));
+                    Intent intentWeb = new Intent(Intent.ACTION_VIEW, Uri.parse("http://" + url));
                     startActivity(intentWeb);
 
 
@@ -100,7 +100,7 @@ public class ThirdActivity extends AppCompatActivity {
         ibcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentContact=new Intent(Intent.ACTION_VIEW,Uri.parse("content://contacts/people"));
+                Intent intentContact = new Intent(Intent.ACTION_VIEW, Uri.parse("content://contacts/people"));
                 startActivity(intentContact);
             }
         });
@@ -111,10 +111,21 @@ public class ThirdActivity extends AppCompatActivity {
         ibm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String correo=etm.getText().toString();
+                String correo = etm.getText().toString();
 
-                Intent intentMail=new Intent(Intent.ACTION_SENDTO,Uri.parse("mailto:"+correo));
+                Intent intentMail = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + correo));
                 startActivity(intentMail);
+            }
+        });
+
+
+//acceso a camara
+
+        ibc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCam=new Intent("android.media.action.IMAGE_CAPTURE");
+                startActivity(intentCam);
             }
         });
 
@@ -126,31 +137,32 @@ public class ThirdActivity extends AppCompatActivity {
         //verificamos el tipo de servicio
 
 
-        switch(requestCode){
+        switch (requestCode) {
 
             case PCC:
-                    String permission=permissions[0];
-                    int result=grantResults[0];
+                String permission = permissions[0];
+                int result = grantResults[0];
 
-                    //comprobamos si se tiene privilegios
-                if(result==PackageManager.PERMISSION_GRANTED){
+                //comprobamos si se tiene privilegios
+                if (result == PackageManager.PERMISSION_GRANTED) {
 
-                    String tel=etp.getText().toString();
-                    Intent itel=new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+tel));
-                    if(ActivityCompat.checkSelfPermission(this,Manifest.permission.CALL_PHONE)!=PackageManager.PERMISSION_GRANTED) return;
+                    String tel = etp.getText().toString();
+                    Intent itel = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + tel));
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
+                        return;
                     startActivity(itel);
 
 
-                }else{
+                } else {
 
-                    Toast.makeText(ThirdActivity.this,"Acceso Denegado",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ThirdActivity.this, "Acceso Denegado", Toast.LENGTH_SHORT).show();
                 }
                 break;
 
 
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-                    break;
+                break;
 
 
         }
